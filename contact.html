@@ -99,19 +99,35 @@
     <!-- Back button -->
     <a href="frontpage.html">
       <button type="button" class="back-btn">Back to Home</button>
-       <a href="about.html"></a>
     </a>
   </div>
 
   <script>
     document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent default form submission
+
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
 
-      if (name === "" || email === "") {
-        alert("Please fill in both Name and Email fields.");
-        event.preventDefault(); // Prevent form submission
+      // Validation
+      if (name === "" || email === "" || message === "") {
+        alert("Please fill in all fields.");
+        return;
       }
+
+      // Create submission object
+      const submission = { name, email, message };
+
+      // Retrieve existing submissions or create new array
+      let submissions = JSON.parse(localStorage.getItem("submissions")) || [];
+      submissions.push(submission);
+
+      // Save back to LocalStorage
+      localStorage.setItem("submissions", JSON.stringify(submissions));
+
+      alert("Form submitted successfully!");
+      document.getElementById("contactForm").reset();
     });
   </script>
 </body>
