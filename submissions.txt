@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Submissions</title>
+</head>
+<body>
+  <h2>Form Submissions</h2>
+  <div id="submissionsList"></div>
+
+  <script>
+    const submissions = JSON.parse(localStorage.getItem("submissions")) || [];
+    const listDiv = document.getElementById("submissionsList");
+
+    if (submissions.length === 0) {
+      listDiv.innerHTML = "<p>No submissions yet.</p>";
+    } else {
+      submissions.forEach((sub, index) => {
+        const entry = document.createElement("div");
+        entry.innerHTML = `
+          <h3>Submission ${index + 1}</h3>
+          <p><strong>Name:</strong> ${sub.name}</p>
+          <p><strong>Email:</strong> ${sub.email}</p>
+          <p><strong>Message:</strong> ${sub.message}</p>
+          <hr>
+        `;
+        listDiv.appendChild(entry);
+      });
+    }
+  </script>
+</body>
+</html>
