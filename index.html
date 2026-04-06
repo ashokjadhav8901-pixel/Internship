@@ -1,42 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Local Store E-commerce</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager Dashboard</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
+    <h1>Task Manager</h1>
+    <div class="task-input">
+      <input type="text" id="taskInput" placeholder="Enter a new task">
+      <button onclick="addTask()">Add Task</button>
+    </div>
 
-<!-- Gradient Circle -->
-<div class="gradient-circle"></div>
+    <div class="search-filter">
+      <input type="text" id="searchInput" placeholder="Search tasks..." onkeyup="searchTasks()">
+      <select id="filter" onchange="filterTasks()">
+        <option value="all">All</option>
+        <option value="completed">Completed</option>
+        <option value="pending">Pending</option>
+      </select>
+    </div>
 
-<h1>🛒 Local Store E-commerce Platform</h1>
-
-<!-- Search & Sort -->
-<div class="controls">
-    <input type="text" placeholder="Search products..." onkeyup="searchProduct(this.value)">
-    <select onchange="sortProducts(this.value)">
-        <option value="">Sort by Price</option>
-        <option value="low">Low to High</option>
-        <option value="high">High to Low</option>
-    </select>
-</div>
-
-<!-- Products -->
-<div class="products" id="productList"></div>
-
-<!-- Cart -->
-<div class="cart-box">
-    <h2>🛍 Shopping Cart</h2>
-    <div id="cart"></div>
-    <h3>Total Amount: ₹<span id="total">0</span></h3>
-</div>
-
-<!-- Footer -->
-<footer>
-    <p>© 2026 Ashok Store | Designed by Jadhav Jadhav</p>
-</footer>
-
-<script src="script.js"></script>
+    <ul id="taskList"></ul>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
